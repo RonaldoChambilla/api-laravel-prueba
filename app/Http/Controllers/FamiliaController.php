@@ -13,6 +13,9 @@ class FamiliaController extends Controller
         ]
         );
     try{
+        if($request->nombre == ""){
+            return response()->json(['El campo de nombre debe estar llenado para insertar una marca.'], 400);
+            }else{
         $familia = Familia::create([
             'nombre' => $request -> nombre,
         ]
@@ -20,11 +23,12 @@ class FamiliaController extends Controller
         return response()->json([
             'message'=>'familia creada correctamente',
             'familia'=>$familia
-        ]);
+        ], 200);
+    }
     }catch(Exception $e){
         return response()->json([
             'error al incertar familia'=> $e
-        ]);
+        ], 500);
     }
     
     }

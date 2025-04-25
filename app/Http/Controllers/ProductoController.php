@@ -31,12 +31,12 @@ class ProductoController extends Controller
             return response()->json([
                 'message'=>'se inserto correctamente',
                 'prodcuto'=>$producto
-            ]);
+            ], 200);
         }catch(Exception $e){
             return response()->json([
                 'message'=>'error al insertar cliente',
                 'error'=>$e
-            ]);
+            ], 500);
             
         }
     }
